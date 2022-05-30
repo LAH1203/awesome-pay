@@ -1,4 +1,5 @@
 import Card from './Basic';
+import { CardType } from '../../types';
 import styled from 'styled-components';
 
 const CardName = styled.div`
@@ -11,17 +12,20 @@ const CardName = styled.div`
 `;
 
 type Props = {
+  id: CardType['id'];
   bgColor: string;
-  cardName: string;
+  cardName: CardType['cardName'];
   className?: string;
-  company: string;
-  ownerName: string;
-  number: string;
+  company: CardType['cardCompany'];
+  ownerName: CardType['cardOwnerName'];
+  number: CardType['cardNumber'];
   size: 'small' | 'medium' | 'large';
-  validDate: string;
+  validDate: CardType['validDate'];
+  onClickFunc?: (e: React.MouseEvent<HTMLElement>) => void;
 };
 
 function DisplayCard({
+  id,
   bgColor,
   cardName,
   className,
@@ -30,16 +34,19 @@ function DisplayCard({
   number,
   size = 'medium',
   validDate,
+  onClickFunc,
 }: Props) {
   return (
     <div className={className}>
       <Card
+        id={id}
         bgColor={bgColor}
         company={company}
         size={size}
         name={ownerName}
         number={number}
         validDate={validDate}
+        onClickFunc={onClickFunc}
       />
       <CardName>{cardName}</CardName>
     </div>

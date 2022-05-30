@@ -1,6 +1,6 @@
 import { Arrow, Button, DisplayCard, Spinner } from '../../components';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { encryptCardNumber, makeValidDate } from '../../utils/processCard';
-import { useEffect, useRef, useState } from 'react';
 
 import { State } from '../../types';
 import { splitCardNumbers } from '../../utils/regExp';
@@ -9,10 +9,25 @@ import styled from 'styled-components';
 const CardSection = styled.section`
   position: relative;
   padding: 0 20px;
+`;
+
+const CardHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   h3 {
     font-size: 17px;
     margin-bottom: 20px;
+  }
+
+  Button {
+    font-size: 30px;
+    margin-right: 10px;
+
+    :hover {
+      transform: scale(1.2);
+    }
   }
 `;
 
@@ -41,14 +56,14 @@ const Card = styled(DisplayCard)`
 
 const LeftButton = styled(Button)`
   position: absolute;
-  top: 120px;
+  top: 145px;
   left: 20px;
   animation: dungdung 0.5s infinite alternate;
 `;
 
 const RightButton = styled(Button)`
   position: absolute;
-  top: 120px;
+  top: 145px;
   right: 35px;
   animation: dungdung 0.5s infinite alternate;
 `;
@@ -62,7 +77,11 @@ const Description = styled.div`
   }
 `;
 
-function HoldingCards() {
+type Props = {
+  setContent: Dispatch<SetStateAction<'payment' | 'add'>>;
+};
+
+function HoldingCards({ setContent }: Props) {
   const [cardList, setCardList] = useState<State['cardList']>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -86,6 +105,26 @@ function HoldingCards() {
         );
       });
   }, []);
+
+  const onClickAddCardButton = () => {
+    setContent('add');
+  };
+
+  const onClickDeleteCard = (e: React.MouseEvent<HTMLElement>) => {
+    if (!confirm('삭제하시겠습니까?')) return;
+
+    if (!(e.currentTarget instanceof HTMLDivElement)) return;
+
+    const { id } = e.currentTarget;
+
+    fetch(`https://heroku-payments-npm.herokuapp.com/cards/${id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      setCardList(
+        cardList.filter(card => card.id && card.id.toString() !== id),
+      );
+    });
+  };
 
   const onClickLeftButton = () => {
     if (!sliderRef.current) return;
@@ -119,7 +158,12 @@ function HoldingCards() {
 
   return (
     <CardSection>
-      <h3>보유 카드</h3>
+      <CardHeader>
+        <h3>보유 카드</h3>
+        <Button size="small" bgColor="none" onClickFunc={onClickAddCardButton}>
+          +
+        </Button>
+      </CardHeader>
       <CardContainer>
         {isLoading ? (
           <Spinner />
@@ -144,6 +188,7 @@ function HoldingCards() {
                   validDate,
                 }) => (
                   <Card
+                    id={id}
                     bgColor={cardColor}
                     cardName={cardName}
                     company={cardCompany}
@@ -155,6 +200,7 @@ function HoldingCards() {
                     validDate={makeValidDate(validDate)}
                     size="small"
                     key={id}
+                    onClickFunc={onClickDeleteCard}
                   />
                 ),
               )}

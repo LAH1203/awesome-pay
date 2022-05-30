@@ -1,10 +1,10 @@
-import { Button } from 'components';
-import { Payment } from 'components';
+import { Button, PaymentModal } from '../../components';
+
 import { useState } from 'react';
 
 function MainPage() {
   const [totalMoney, setTotalMoney] = useState(100000);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   const toggleShowModal = () => {
     setShowModal(prevState => !prevState);
@@ -18,7 +18,7 @@ function MainPage() {
   return (
     <div>
       <Button onClickFunc={toggleShowModal}>결제 모달 켜기</Button>
-      <Payment
+      <PaymentModal
         showModal={showModal}
         toggleShowModal={toggleShowModal}
         companyName="woowa store"

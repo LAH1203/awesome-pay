@@ -1,19 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
-  ${reset}
-
-  body {
-    display: flex;
-    justify-content: center;
-    font-family: 'Gowun Dodum', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
-    background: #faf7fc;
-  }
-
   @keyframes dungdung {
     0% {
       transform: translate(0, 2.5px);
@@ -22,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
       transform: translate(0, -2.5px);
     }
   }
-
   @keyframes blowUpModal {
     0% {
       opacity: 0;
@@ -31,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
       opacity: 1;
     }
   }
-
   @keyframes loading {
     0% {
       top: 8px;
@@ -76,6 +61,17 @@ const GlobalStyle = createGlobalStyle`
     100% {
       top: 8px;
       height: 50px;
+    }
+  }
+
+  @keyframes selectBoxFadein {
+    from {
+      opacity: 0;
+      top: 150px;
+    }
+    to {
+      opacity: 1;
+      top: 160px;
     }
   }
 `;

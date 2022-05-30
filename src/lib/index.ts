@@ -1,1 +1,1 @@
-export { default as PayModal } from '../components/Payment';
+export { default as PayModal } from '../components/PaymentModal';

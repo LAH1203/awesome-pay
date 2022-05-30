@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { CardType } from '../../types';
+
 const getCardSize = (size: 'small' | 'medium' | 'large') => {
   switch (size) {
     case 'small':
@@ -184,17 +186,19 @@ const ValidDate = styled.span`
 `;
 
 type Props = {
+  id?: CardType['id'];
   bgColor: string;
   className?: string;
-  company: string;
-  name: string;
-  number: string;
+  company: CardType['cardCompany'];
+  name: CardType['cardName'];
+  number: CardType['cardNumber'];
   size: 'small' | 'medium' | 'large';
-  validDate: string;
+  validDate: CardType['validDate'];
   onClickFunc?: (e: React.MouseEvent<HTMLElement>) => void;
 };
 
 function Card({
+  id,
   bgColor,
   className,
   company,
@@ -208,6 +212,7 @@ function Card({
 
   return (
     <StyledCard
+      id={id?.toString()}
       className={className}
       bgColor={bgColor}
       cardStyle={card}

@@ -18,10 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "baseUrl": "./src/",
     "declaration": true,
     "outDir": "./dist"
   },
-  "include": ["./src/"],
+  "include": ["./src/", "./src/config.d.ts"],
   "exclude": ["node_modules/*"]
 }

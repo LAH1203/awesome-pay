@@ -5,7 +5,7 @@ import Arrow from './Arrow';
 import Button from './Button';
 import CheckBox from './CheckBox';
 import Modal from './Modal';
-import Payment from './Payment';
+import PaymentModal from './PaymentModal';
 import Spinner from './Spinner';
 
 export {
@@ -16,6 +16,6 @@ export {
   CheckBox,
   Spinner,
   Modal,
-  Payment,
+  PaymentModal,
   AppContainer,
 };

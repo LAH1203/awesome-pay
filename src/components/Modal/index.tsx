@@ -17,6 +17,11 @@ const Dimmer = styled.div`
 
 const Content = styled.div`
   animation: blowUpModal 0.5s;
+
+  font-family: 'Gowun Dodum', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 `;
 
 type Props = {
