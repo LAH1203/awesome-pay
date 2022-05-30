@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function MainPage() {
   const [totalMoney, setTotalMoney] = useState(100000);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleShowModal = () => {
     setShowModal(prevState => !prevState);
