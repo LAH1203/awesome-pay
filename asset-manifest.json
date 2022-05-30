@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/awesome-pay/static/js/main.9f3f65db.js",
+    "main.js": "/awesome-pay/static/js/main.f0b3f3ca.js",
     "index.html": "/awesome-pay/index.html",
-    "main.9f3f65db.js.map": "/awesome-pay/static/js/main.9f3f65db.js.map"
+    "main.f0b3f3ca.js.map": "/awesome-pay/static/js/main.f0b3f3ca.js.map"
   },
   "entrypoints": [
-    "static/js/main.9f3f65db.js"
+    "static/js/main.f0b3f3ca.js"
   ]
 }
