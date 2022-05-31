@@ -1,3 +1,4 @@
+import { isNumber } from '../utils/regExp';
 import useInput from './useInput';
 
 const useNumber = (initialValue: string) => {
@@ -7,6 +8,7 @@ const useNumber = (initialValue: string) => {
     const { value } = e.target;
 
     if (value.length > 4) return;
+    if (value !== '' && !isNumber(value)) return;
 
     setNumber(e);
   };

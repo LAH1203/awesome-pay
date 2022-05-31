@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 const Title = styled.h2`
   font-size: 20px;
-  margin: 0;
+  margin: 0 0 20px;
 
   span {
     color: #ff413b;

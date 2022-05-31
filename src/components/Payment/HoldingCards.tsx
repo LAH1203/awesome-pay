@@ -68,15 +68,6 @@ const RightButton = styled(Button)`
   animation: dungdung 0.5s infinite alternate;
 `;
 
-const Description = styled.div`
-  margin-top: 20px;
-  font-size: 13px;
-
-  span {
-    font-weight: 900;
-  }
-`;
-
 type Props = {
   setContent: Dispatch<SetStateAction<'payment' | 'add'>>;
 };
@@ -119,11 +110,17 @@ function HoldingCards({ setContent }: Props) {
 
     fetch(`https://heroku-payments-npm.herokuapp.com/cards/${id}`, {
       method: 'DELETE',
-    }).then(() => {
-      setCardList(
-        cardList.filter(card => card.id && card.id.toString() !== id),
-      );
-    });
+    })
+      .then(() => {
+        setCardList(
+          cardList.filter(card => card.id && card.id.toString() !== id),
+        );
+      })
+      .catch(() => {
+        alert(
+          '카드 정보를 삭제하는데 에러가 발생하였습니다. 다시 시도해주세요.',
+        );
+      });
   };
 
   const onClickLeftButton = () => {
@@ -215,11 +212,6 @@ function HoldingCards({ setContent }: Props) {
           </>
         )}
       </CardContainer>
-      <Description>
-        {'계좌정보 변경은 '}
-        <span>{'설정>계좌정보'}</span>
-        {'에서 하실 수 있습니다.'}
-      </Description>
     </CardSection>
   );
 }

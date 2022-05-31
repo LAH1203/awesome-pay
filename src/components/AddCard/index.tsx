@@ -203,9 +203,13 @@ function AddCard({ setContent }: Props) {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(() => {
-      setContent('payment');
-    });
+    })
+      .then(() => {
+        setContent('payment');
+      })
+      .catch(() => {
+        alert('카드 정보를 저장하는데 오류가 발생했습니다. 다시 시도해주세요.');
+      });
   };
 
   const toggleShowCompanySelectBox = (e: React.MouseEvent<HTMLElement>) => {
