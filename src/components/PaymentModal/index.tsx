@@ -2,10 +2,10 @@ import { AppContainer, Modal } from '../../components';
 
 import AddCard from '../../components/AddCard';
 import { ContentType } from '../../types';
-import GlobalStyle from '../../styles/Global';
 import Helmet from '../../Helmet';
 import Payment from '../../components/Payment';
 import { useState } from 'react';
+import GlobalStyle from '../../styles/Global';
 
 type Props = {
   showModal: boolean;
