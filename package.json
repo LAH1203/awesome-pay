@@ -1,6 +1,6 @@
 {
   "name": "awesome-pay",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "React Awesome Pay",
   "private": false,
   "main": "dist/lib/index.js",

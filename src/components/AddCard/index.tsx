@@ -345,10 +345,12 @@ function AddCard({ setContent }: Props) {
             <Input value={name} onChange={setName} />
           </div>
         </InputGroup>
-        {isAllNeededValuesEnteredWell() && (
+        {isAllNeededValuesEnteredWell() ? (
           <AddButton type="submit" color="#ff9c9c" fontWeight="900">
             추가
           </AddButton>
+        ) : (
+          <AddButton color="none" />
         )}
       </Content>
     </div>
